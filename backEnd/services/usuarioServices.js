@@ -17,7 +17,7 @@ async function getMultiple(page) { /* page = 1 */
 }
 
 
-async function create(usuarioService) {
+async function create(usuarioService) {/* POST para crear nueva informacion */
   const result = await db.query(
     `INSERT INTO Usuarios 
     (nombre,Email,contraseña,Rol,fecha_creacion) 
@@ -35,29 +35,29 @@ async function create(usuarioService) {
   return { message };
 }
 
-async function update(id, usuarioService) {
+async function update(id, usuarioService) { /* funcion de PUT para editar informacion ya existente */
   const result = await db.query(
     `UPDATE Usuarios 
     SET nombre="${usuarioService.nombre}", Email=${usuarioService.Email}, contraseña=${usuarioService.contraseña}, 
-    rol=${usuarioService.rol}, fecha_creacion=${usuarioService.fecha_creacion} 
+    rol=${usuarioService.Rol}, fecha_creacion=${usuarioService.fecha_creacion} 
     WHERE id=${id}`
   );
 
-  let message = "Error in updating programming language";
+  let message = "Error en editar info de usuario ";
 
   if (result.affectedRows) {
-    message = "Programming language updated successfully";
+    message = "User updated successfully";
   }
 
   return { message };
 }
 
-async function remove(id) {/* delete en el CRUD */
+async function remove(id) {/* delete para borrar */
   const result = await db.query(
     `DELETE FROM Usuarios WHERE id=${id}`
   );
 
-  let message = "Error in deleting programming language";
+  let message = "Error En eliminar al usuario";
 
   if (result.affectedRows) {
     message = "Programming language deleted successfully";

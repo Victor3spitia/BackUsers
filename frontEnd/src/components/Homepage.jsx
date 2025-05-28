@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ListAlumno from "./ListAlumno";
-import FormularioAlumno from "./FormularioAlumno";
-import FormularioEditarAlumno from "./FormularioEditar";
+import ListUser from "./ListUsuario";
+import FormularioUser from "./FormularioAlumno";
+import EditarUser from "./FormularioEditar";
 import Titulo from "./Titulo";
 
 /** Alertas con React Toastify */
@@ -32,19 +32,19 @@ const HomePage = () => {
 
   const eliminarAlumno = async (id) => {
     try {
-      const response = await axios.delete(`${URL_API}/${id}`); 
+      const response = await axios.delete(`${URL_API}/${id}`); /* primero busca el GET para eliminar por el id */
       console.log("Usuario eliminado:", response.data);
       toast.error("Usuario eliminado correctamente.");
       // Actualizar la lista de usuarios
       obtenerAlumnos();
     } catch (error) {
-      console.error("Error al eliminar el Usuario:", error);
+      console.error("Error al eliminar el Usuario:", error.data);
     }
   };
 
-  const obtenerDatosAlumno = async (id) => {
+  const editarDatosUser = async (id) => {
     try {
-      const response = await axios.get(`${URL_API}/${id}`);
+      const response = await axios.put(`${URL_API}/${id}`);/* primero busca el GET para editar por el id */
       console.log("datos del Usuario:", response.data);
       setShowRegistroForm(false);
       setAlumnoEditar(response.data[0]); // Almacenar los datos del usuario
@@ -56,7 +56,7 @@ const HomePage = () => {
   const agregarAlumno = async (nuevoAlumno) => {
     console.log(nuevoAlumno);
     try {
-      const response = await axios.post(URL_API, nuevoAlumno);
+      const response = await axios.post(URL_API, nuevoAlumno);/* guarda los nuevos datos para la base de datos */
       toast.success("usuario registrado correctamente.");
       console.log("Usuario agregado:", response.data);
       // Actualizar la lista de alumnos
@@ -95,9 +95,9 @@ const HomePage = () => {
           />
           {/* Formulario para registrar o editar */}
           {showRegistroForm ? (
-            <FormularioAlumno agregarAlumno={agregarAlumno} />
+            <FormularioUser agregarAlumno={agregarAlumno} />
           ) : (
-            <FormularioEditarAlumno
+            <EditarUser
               alumno={alumnoEditar}
               handleActualizarAlumno={handleActualizarAlumno}
             />
@@ -105,10 +105,10 @@ const HomePage = () => {
         </div>
 
         {/* llama la lista de usuarios */}
-        <ListAlumno
+        <ListUser
           alumnos={alumnos}
           eliminarAlumno={eliminarAlumno}
-          obtenerDatosAlumno={obtenerDatosAlumno}
+          editarDatosUser={editarDatosUser}
         />
       </div>
     </>

@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 app.use("/Usuarios", usuariosRouter); 
 
 /* este es el que busca el post en el routes y los muestra en la consola */
-app.post("/Registri", (req, res) => {
+app.post("/Usuarios", (req, res) => { /* cuidado si esto jode el PUT */
   const { usuarioID, nomUsuario, emailUsuario, contUsuario,rolUsuario,CreaFecha } = req.body;
   const usuario = {
     usuarioID,
