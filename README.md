@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./expertrix.png" alt="logo" width="250" height="250" />
+<img src="./frontEnd/public/expertrix.png" alt="logo" width="250" height="250" />
   <br/>
 
   <h3><b>FORM AZURE APP</b></h3>
