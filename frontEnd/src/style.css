@@ -1,0 +1,1014 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-primary: #6c63ff;
+    --color-primary-light: hsl(242, 91%, 69%, 18%);
+    --color-primary-variant: #585ac7;
+    --color-success: #00bf8e;
+    --color-green-light: hsl(156, 100%, 38%, 15%);
+    --color-warning: #f7c94b;
+    --color-danger: #f75842;
+    --color-red-light: hsl(346, 87%, 46%, 15%);
+    --color-gray-900: #1e1e66;
+    --color-gray-700: #2d2b7c;
+    --color-gray-300: rgba(242, 242, 254, 0.3);
+    --color-gray-200: rgba(242, 242, 254, 0.7);
+    --color-white: #fff;
+    --color-light: rgba(255, 255, 255, 0.7);
+    --color-black: #000;
+    --color-bg: #0c1648;
+    --color-bg1: #343974;
+    --color-bg2: #424890;
+
+    --container-width-lg: 74%;
+    --container-width-md: 88%;
+    --container-width-sm: 94%;
+    --form-width: 40%;
+
+    --card-border-radius-1:0.3rem;
+    --card-border-radius-2:0.5rem;
+    --card-border-radius-3:0.8rem;
+    --card-border-radius-4:2rem;
+    --card-border-radius-5:5rem;
+
+    --transition: all 400ms ease;
+}
+
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.7;
+    color: var(--color-white);
+    background: var(--color-bg);
+}
+
+.container{
+    width: var(--container-width-lg);
+    margin: 0 auto;
+}
+
+section{
+    padding: 6rem 0;
+}
+
+section h2{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+h1, h2, h3, h4, h5{
+    font-weight: 1.2;
+}
+
+h1{
+    font-size: 2.4rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.6rem;
+}
+
+h4{
+    font-size: 1.3rem;
+}
+
+a {
+    color : var(--color-white);
+}
+
+img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--color-white);
+    color: var(--color-black);
+    padding: 1rem 2rem;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.btn:hover{
+    background: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-primary{
+    background: var(--color-danger);
+    color: var(--color-white);
+}
+
+/*-------- NAVBAR ---------*/
+
+nav{ /* este es la linea de arriba del todo */
+    background: var(transparent); 
+    width: 100vw;
+    height: 4.5rem;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+}
+
+/* cambia los estilos del navbar cuando pasa scroll usando JS */
+.window-scroll {
+    background: var(--color-primary);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.nav_container{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav button{
+    display: none;
+}
+
+.nav_menu{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.nav_menu a{
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav_menu a:hover{
+    color: var(--color-bg2);
+}
+
+.avatar {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.3rem solid var(--color-bg);
+}
+
+.nav_logo {
+    width: 13%;
+    height: auto;
+    margin-top: 0.1%;
+    
+}
+
+.nav_perfil {
+    position: relative;
+    cursor: pointer;
+}
+
+.nav_perfil ul {
+    position: absolute;
+    top: 85%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3rem 3rem rgba(0 ,0 ,0 ,0.4);
+    background: var(--color-gray-900);
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+/* muestra el nav cuando pasa el cursor */
+
+.nav_perfil:hover > ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+.nav_perfil ul li a {
+    padding: 1rem;
+    background: var(--color-gray-900);
+    display: block;
+    width: 100%;
+}
+
+.nav_perfil ul li:last-child a {
+    background: var(--color-danger);
+    color: var(--color-bg);
+}
+
+/* ------- header ------- */
+
+header{ /* toda la portada de arriba */
+    position: relative;
+    top: 5rem;
+    overflow: hidden;
+    height: 70vh;
+    margin-bottom: 5rem;
+}
+
+.header_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    height: 100%;
+}
+
+.header_izquierda p {
+    margin: 1rem 0 2.4rem;
+
+}
+
+
+/* ------ categorias ------ */
+
+.categorias {
+    background: var(--color-bg1);
+    height: 32rem;
+}
+
+.categorias h1 {
+    line-height: 1;
+    margin-bottom: 3rem;
+}
+
+.categorias_container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 4rem;
+}
+
+.categorias_izquierda {
+    margin-right: 4rem;
+}
+
+.categorias_izquierda p {
+    margin: 1rem 0 3rem;
+}
+
+.categorias_derecha {/* aqui estan las opciones de categoria y el repeat muestra el orden de las categorias como columnas */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.categoria {/* los cuadritos de las categorias */
+    background: var(--color-bg2);
+    padding: 2rem;
+    border-radius: 2rem;
+    transition: var(--transition);
+}
+
+.categoria:hover {
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+/* este child es para modificar un espacio en especifico de los cuadrados de los iconos */
+.categoria:nth-child(2) .categoria_icono {
+    background: var(--color-success);
+}
+
+.categoria:nth-child(3) .categoria_icono {
+    background: var(--color-warning);
+}
+
+.categoria:nth-child(4) .categoria_icono {
+    background: var(--color-warning);
+}
+
+.categoria:nth-child(5) .categoria_icono {
+    background: var(--color-danger);
+}
+
+.categoria_icono {
+    background: var(--color-primary);
+    padding: 0.7rem;
+    border-radius: 0.9rem;
+}
+
+.categoria h5 {
+    margin: 2rem 0 1rem;
+}
+
+.categoria p {
+    font-size: 0.5rem;
+}
+
+/* ----- CURSOS POPULARES ------ */
+
+.cursos {
+    margin-top: 10rem;
+   
+}
+
+.cursos_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.curso {
+    background: var(--color-bg1);
+    text-align: center;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.curso:hover {
+    background: transparent;
+    border-color: var(--color-primary);
+}
+
+.curso_info {
+    padding: 2rem 0 2rem;
+    font-size: 0.9rem;
+}
+
+/* ------- TESTIMONIOS ------- */
+
+.testimonios_container{
+    overflow-x: hidden;
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+.testimonio {
+    padding-top: 2rem;
+}
+
+.avatar {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1rem;
+    border: 1rem solid var(--color-bg1);
+}
+
+.testimonio_info {
+    text-align: center;
+}
+
+.testimonio_body {
+    background: var(--color-primary);
+    padding: 2rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.testimonio_body::before {  /* este da forma al triangulito que apunta arriba de la foto de los avatares */
+    content: "";
+    display: block;
+    background: linear-gradient(135deg, transparent, var(--color-primary), var(--color-primary));
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    left: 50%;
+    top: -1.5rem;
+    transform: rotate(45deg);
+}
+
+/* ------ PREGUNTAS FRECUENTES -------- */
+
+.faqs {
+    background: var(--color-bg1);
+    box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.5);
+}
+
+.faqs_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.faq {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    height: fit-content;
+    background: var(--color-primary);
+    cursor: pointer;
+}
+
+.faq h4 {
+    font-size: 1rem;
+    line-height: 2.2;
+}
+
+.faq_icon {
+    align-self: flex-start;
+    font-size: 1.2rem;
+}
+
+.faq p {
+    margin-top: 0.8rem;
+    display: none;
+}
+
+.faq.open p {
+    display: block;
+}
+
+
+
+
+
+/* ---------- POSTEO SOLO ----------- */
+
+.singlepost {
+    margin: 6rem 0 2rem;
+}
+
+.singlepost_container {
+    width: var(--form-width);
+    background: var(--color-gray-900);
+    padding: 1rem 2rem 2rem;
+}
+
+.singlepost_container p{
+    margin-top: 1rem;
+    line-height: 1.7;
+}
+
+.singlepost_minatura {
+    margin: 1.5rem 0 1rem;
+}
+
+.post_autor {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.post_avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--card-border-radius-3);
+    overflow: hidden;
+}
+
+/* --------- pagina vacia ------------ */
+
+.pagina_vacia {
+    height: 70vh;
+    text-align: center;
+    display: grid;
+    place-content: center;
+
+}
+
+/* -------------- DESTACADOS ------------ */
+
+.featured {
+    margin-top: 8rem;
+}
+
+.featured_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.featured .post_miniatura {
+    height: fit-content;
+}
+
+/* ------------------ FORM GENERAL ------------ */
+
+.form_section {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.section_container {
+    width: var(--form-width);
+}
+
+.alerta_mensaje {
+    background: red;
+    padding: 0.8rem 1.4rem;
+    margin-bottom: 1rem;
+    border-radius: var(--card-border-radius-2);
+}
+
+.alerta_mensaje.error {
+    background: var(--color-red-light);
+    color: var(--color-danger);
+}
+
+.alerta_mensaje.succes {
+    background: var(--color-green-light);
+    color: var(--color-success);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form_control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.form_control.inline {
+    flex-direction: row;
+    align-items: center;
+}
+
+input, textarea, select {
+    padding: 0.8rem 1.4rem;
+    background-color: var(--color-gray-900);
+    border-radius: var(--card-border-radius-2);
+    resize: none;
+    color: var(--color-white);
+}
+
+.form_section small {
+    margin-top: 1rem;
+    display: block;
+}
+
+.form_section small a {
+    color: var(--color-primary);
+}
+
+/* ---------------- BOTON CATEGORIA --------------------- */
+
+.categoria_button {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--card-border-radius-2);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.categoria_button:hover {
+    color: var(--color-white);
+}
+
+/* -------------- BUSQUEDA ---------- */
+
+.barra_busqueda {
+    margin-top: 7rem;
+}
+
+.barra_container {
+    position: relative;
+    width: 30rem;
+    background: var(--color-gray-900);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0.6rem 1rem;
+    border-radius: var(--card-border-radius-2);
+    color: var(--color-gray-300);
+}
+
+.barra_container > div {
+    width: 100%;
+    display: flex; 
+    align-items: center;
+}
+
+.barra_busqueda input {
+    background: transparent;
+    margin-left: 0.7rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.barra_busqueda input::placeholder {
+    color: var(--color-gray-300);
+}
+
+/* -------------- BOTON BUSCAR ------------ */
+
+.btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-primary);
+    border-radius: var(--card-border-radius-2);
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--color-white);
+}
+
+/* -------------- POST GENERAL ------------ */
+
+.post_miniatura {
+    border-radius: var(--card-border-radius-5) 0;
+    border: 1rem solid var(--color-gray-900);
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+}
+/* esto vuelve una imagen a blanco y negro */
+.post:hover .post_miniatura img { 
+    filter: saturate(0);
+    transition: filtrer 500ms ease;
+}
+
+.post_autor {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.post_avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--card-border-radius-3);
+    overflow: hidden;
+}
+
+
+/* ---------- POSTS VARIOS -------------- */
+
+.posts_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+/* ------------ BOTONES CATEGORIAS ------------- */
+
+.categorias_buttons {
+    padding: 4rem 0;
+    border-top: 2px solid var(--color-gray-900);
+    border-bottom: 2px solid var(--color-gray-900);
+}
+
+.categorias_container {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* ---------------------POST CATEGORIA---------------- */
+
+.categoria_titulo {
+    height: 15rem;
+    margin-top: 4.5rem;
+    background: var(--color-gray-900);
+    display: grid;
+    place-items: center;
+}
+
+
+/* -------------- DASHBOARD ------------ */
+
+.dashboard {
+    margin-top: 6rem;
+}
+
+.dashboard_container {
+    display: grid;
+    grid-template-columns: 14rem auto;
+    gap: 1rem;
+    background: var(--color-gray-900);
+    padding: 2rem;
+    margin-bottom: 5rem;
+}
+
+.dashboard aside a {
+    background-color: var(--color-primary);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.6rem;
+}
+
+.dashboard aside ul li:not(:last-child) a {
+    border-bottom:  1px solid var(--color-gray-900);
+}
+
+.dashboard aside a:hover{
+    background: var(--color-gray-700);
+}
+
+.dashboard aside a.active {
+    background-color: var(--color-gray-900);
+} 
+
+.dashboard main {
+    margin-left: 1.5rem;
+}
+
+.dashboard main h2 {
+    margin: 0 0 2rem 0;
+    line-height: 1;
+}
+
+.dashboard main table {
+    width: 100%;
+    text-align: left;
+}
+
+.dashboard main table th {
+    background: var(--color-gray-700);
+    padding: 0.8rem;
+    color: var(--color-white);
+}
+
+.dashboard main table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.dashboard main table tr:hover td {
+    background-color: var(--color-bg);
+    color: var(--color-white);
+    cursor: default;
+    transition: var(--transition);
+}
+
+/* ---------- FOOTER ----------- */
+
+footer {
+    background: var(--color-bg1);
+    padding-top: 5rem;
+    font-size: 0.9rem;
+}
+
+.footer_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+}
+
+.footer_container > div h4 {
+    margin-bottom: 1.2rem;
+}
+
+.footer_1 p {
+    margin: 1rem 0 2rem;
+}
+
+footer ul li {
+    margin-bottom: 0.7rem;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer_redesSociales {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.footer_copyright {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--color-bg2);
+}
+
+/* ---------- USO PARA TABLETS ------------- */
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: var(--container-width-md);
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    /* ---NAVBAR--- */
+    nav button {
+        display: inline-block;
+        background: transparent;
+        font-size: 1.8rem;
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+    nav button#close-menu-btn {
+        display: none;
+    }
+
+    .nav_menu {
+        position: fixed;
+        top: 5rem;
+        right: 5%;
+        height: fit-content;
+        width: 18rem;
+        flex-direction: column;
+        gap: 0;
+        display: none;
+    }
+
+    .nav_menu li {
+        width: 100%;
+        height: 5.8rem;
+        animation: animateNavItems 400ms linear forwards;
+        transform-origin: top right;
+        opacity: 0;
+    }
+/* menus individuales */
+    .nav_menu li:nth-child(2){
+        animation-delay: 200ms;
+    }
+
+    .nav_menu li:nth-child(3){
+        animation-delay: 400ms;
+    }
+
+    .nav_menu li:nth-child(4){
+        animation-delay: 600ms;
+    }
+
+    @keyframes animateNavItems {
+        0% {
+            transform: rotateZ(-90deg) rotateX(90deg) scale(0.1);
+        }
+        100% {
+            transform: rotateZ(0) rotateX(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .nav_menu li a {
+        background: var(--color-primary);
+        box-shadow: -4rem 6rem 10rem rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+    }
+
+    .nav_menu li a:hover {
+        background: var(--color-bg2);
+        color: var(--color-white);
+    }
+
+
+    /* ---- HEADER ---- */
+
+    header {
+        height: 52vh;
+        margin-bottom: 4rem;
+    }
+
+    .header_container {
+        gap: 0;
+        padding-bottom: 3rem;
+    }
+
+    /* ---- CATEGORIAS ---- */
+
+    .categorias {
+        height: auto;
+    }
+
+    .categorias_container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .categorias_izquierda {
+        margin-right: 0;
+    }
+
+    /* ---- FAQS ---- */
+
+    .faqs_container {
+        grid-template-columns: 1fr;
+    }
+
+    .faq {
+        padding: 1.5rem;
+    }
+
+    /* ---- CURSOS POPULARES ---- */
+
+    .cursos {
+        margin-top: 0;
+    }
+
+    .cursos_container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* ---- FOOTER ---- */
+
+    .footer_container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* -------- USO PARA MOBILES ------- */
+@media screen and (max-width: 600px) {
+   .container {
+    width: var(--container-width-sm);
+   }
+
+   /* ---- NAVBAR ---- */
+   .nav_menu {
+    right: 3%;
+   }
+    
+   /* ---- HEADER ---- */
+   header {
+    height: 100vh;
+   }
+    
+   .header_container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-top: 0;
+   }
+    .header_izquierda p {
+        margin-bottom: 1.3rem;
+    }
+
+    /* ---- CATEGORIAS ---- */
+    .categorias_derecha {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+    }
+    
+    .categoria {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .categoria_icono {
+        margin-top: 4px;
+        display: inline-block;
+    }
+
+    /* ---- CURSOS POPULARES ---- */
+    .cursos_container {
+        grid-template-columns: 1fr;
+    }
+
+    /* ---- TESTIMONIOS ---- */
+    .testimonio_body {
+        padding: 1.2rem;
+    }
+
+    /* ---- FOOTER ---- */
+    .footer_container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer_1 p {
+        margin: 1rem auto;
+    }
+
+    .footer_redesSociales {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
