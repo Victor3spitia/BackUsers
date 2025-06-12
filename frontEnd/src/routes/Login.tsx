@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../types/types";
-import { Link } from 'react-router-dom' 
-import DefaultLayout from "../layout/DefaultLayout";
+import { Link } from 'react-router-dom';
+import { API_URL } from "../auth/authConstants";
+import Navbar from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 export default function Login() {
@@ -27,7 +28,7 @@ export default function Login() {
     e.preventDefault();
     // auth.setIsAuthenticated(true);
     try {
-      const response = await fetch("http://localhost:3000/dashboard", {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -53,7 +54,7 @@ export default function Login() {
   }
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
       
       <section className="form_section">
     <div className="container section_container">

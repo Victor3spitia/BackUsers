@@ -1,11 +1,11 @@
 import React from 'react'
-import DefaultLayout from "../layout/DefaultLayout";
+import Navbar from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 function post() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
     <section class="singlepost">
         <div class="container singlepost_container">
             <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, eligendi?</h2>

@@ -20,4 +20,4 @@ VALUES
 
 
 SELECT * FROM Usuarios;
-
+DELETE FROM Usuarios WHERE id;

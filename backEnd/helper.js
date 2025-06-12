@@ -13,4 +13,3 @@ module.exports = {
   getOffset,
   emptyOrRows,
 };
-// devuelven los datos de la base de datos siempre retorne un array para evitar errores en el front o la logica del back

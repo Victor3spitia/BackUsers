@@ -1,5 +1,5 @@
 import React from 'react'
-import DefaultLayout from "../layout/DefaultLayout";
+import Navbar from "../layout/Navbar";
 import Piep from "../layout/PieP";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
     {/*<!-- HEADER -->*/}
     <header>
         <div className="container header_container">

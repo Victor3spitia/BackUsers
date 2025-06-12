@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import DefaultLayout from "../layout/DefaultLayout";
+import Navbar from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 
 function courses() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
 {/* <!-- BARRA BUSQUEDA --> */}
     <section className="barra_busqueda">
         <form className="container barra_container" action="">

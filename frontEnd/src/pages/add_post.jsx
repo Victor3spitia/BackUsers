@@ -1,11 +1,11 @@
 import React from 'react'
-import DefaultLayout from './../layout/DefaultLayout';
+import Navbar from './../layout/Navbar';
 import Piep from "../layout/PieP";
 
 function add_post() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
     <section className="form_section">
     <div className="container section_container">
         <h2>Añadir Post</h2>

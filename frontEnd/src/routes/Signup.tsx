@@ -1,9 +1,10 @@
 import { useState } from "react";
-import DefaultLayout from "../layout/DefaultLayout";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../types/types";
 import { Link } from 'react-router-dom';
+import { API_URL } from "../auth/authConstants"; 
+import DefaultLayout from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 export default function Signup() {
@@ -22,10 +23,9 @@ export default function Signup() {
     e.preventDefault();
     console.log(username, email, password, rol); //lo muestra a la consola
 
-
     try {
-      const response = await fetch("http://localhost:3000", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/signup`, {// llamada de la URL
+        method: "POST",//solicitud 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password, rol }), 
       });

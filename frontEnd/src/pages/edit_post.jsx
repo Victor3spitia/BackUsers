@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from "../layout/Navbar";
+import Piep from "../layout/PieP";
 
 function edit_post() {
   return (
     <>
+    <Navbar/>
     <section className="form_section">
     <div className="container section_container">
         <h2>Editar Post</h2>
@@ -27,6 +30,7 @@ function edit_post() {
         </form>
     </div>
 </section>
+<Piep/>
     </>
   )
 }

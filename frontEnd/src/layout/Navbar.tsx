@@ -60,7 +60,7 @@ return (
                 <Link to="/cursos">cursos</Link>
                 <Link to="/signup">Registrarse</Link>
                 <Link to="/login">Inicio sesion</Link> 
-                <li className="nav_perfil">
+                {/* <li className="nav_perfil">
                         <div className="avatar">
                             <img src="./images/avatar1.jpg"/>
                         </div>
@@ -69,9 +69,9 @@ return (
                             <Link to="/logout">Cerrar sesion</Link>
                         </ul>
                     </li>
-                </ul>
-                <button id="open-menu-btn"><i className="bi bi-list"></i></button>
-                <button id="close-menu-btn"><i className="bi bi-x-square"></i></button>
+                    <button id="open-menu-btn"><i className="bi bi-list"></i></button>
+                    <button id="close-menu-btn"><i className="bi bi-x-square"></i></button> */}
+                    </ul>
             </div>
         </nav>
 

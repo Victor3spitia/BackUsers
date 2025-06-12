@@ -44,6 +44,7 @@
 <li> Express </li>
 <li> Async/await </li>
 <li> Babel </li>
+<li> React + Vite </li>
 <li> Git </li>
 <li> Github actions </li>
 <li> Bash Script </li>

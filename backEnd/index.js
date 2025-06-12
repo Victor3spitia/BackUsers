@@ -1,12 +1,11 @@
 const express = require("express");
 const port = 3000;
-const usuariosRouter = require("./routes/DELETE");
+const usuariosRouter = require("./routes/usuarioRoutes");
 const cors = require('cors')
 const app = express();
 app.use(cors())
 app.use(express.json());
-
-const router = express.Router();
+require("dotenv").config();
 
 app.use(
   express.urlencoded({
@@ -18,17 +17,15 @@ app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
 
-const getUser = require ("./routes/GET");
-const postUser = require ("./routes/POST");
-const putUser = require ("./routes/PUT");
-const deleteUser= require ("./routes/DELETE");
+//Rutas para el registro y el inicio sesion
+app.use("/api/signup", require("./routes/signup"));
+app.use("/api/login", require("./routes/login"));
+app.use("/api/signout", require("./routes/logout"));
 
-// Rutas
-router.get("/", getUser);
-router.post("/post", postUser);
-router.put("/:id", putUser);
-router.delete("/:id", deleteUser);
+// Ruta para renovar el token de acceso utilizando el token de actualización
+app.use("/api/refresh-token", require("./routes/refreshToken"));
 
+app.use("/api/posts", authenticateToken, require("./routes/posts"));
 
 
 
@@ -45,7 +42,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
-
-module.exports = router;
-

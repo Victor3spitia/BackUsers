@@ -1,11 +1,11 @@
 import React from 'react'
-import DefaultLayout from '../layout/DefaultLayout';
+import Navbar from '../layout/Navbar';
 import Piep from "../layout/PieP";
 
 function caategoria_post() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
     <section className="posts">
         <div className="container posts_container">
             <article className="post">

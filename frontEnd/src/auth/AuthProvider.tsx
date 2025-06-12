@@ -1,4 +1,4 @@
-/* esto es un componente para utilizar use context para guardar el estado y las funciones */
+/* esto es un componente para utilizar context para guardar el estado y las funciones */
 // valida constantemente  las autentificaciones para dejar pasar a las rutas protegidas, y poder acceder informacion desde el backend al frontend
 import { useContext, createContext, useState, useEffect } from "react";
 import type { AuthResponse, User } from "../types/types";

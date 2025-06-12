@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { API_URL } from "../auth/authConstants";
 import { Link } from 'react-router-dom'
-import DefaultLayout from './../layout/DefaultLayout';
+import Navbar from './../layout/Navbar';
 import Piep from "../layout/PieP";
 
 interface Todo {
@@ -68,7 +68,7 @@ export default function Dashboard() {
 
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
      <section className="dashboard">
     <div className="container dashboard_container">
     <aside>

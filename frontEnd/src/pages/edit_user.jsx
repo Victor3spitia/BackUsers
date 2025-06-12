@@ -1,11 +1,11 @@
 import React from 'react'
-import DefaultLayout from "../layout/DefaultLayout";
+import Navbar from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 function edit_user() {
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
       <section class="form_section">
     <div class="container section_container">
         <h2>Editar Usuario</h2>
