@@ -9,6 +9,21 @@
 
 </div>
 
+# instalar proyecto
+
+Para realizar un test, realiza el siguiente comando:
+
+Dentro de la carpeta de backEnd tienes que escribir en la terminal Node.js command
+```sh
+     npm start
+```
+
+Dentro de la carpeta front tienes que escribir en otra terminal y despues puedes buscar en el 
+navegador el enlace localhost:
+```sh
+    npm run dev
+```
+
 <!-- tabla de contenido -->
 
 # 📗 Tabla de Contenido
