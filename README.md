@@ -13,6 +13,8 @@
 
 Para realizar un test, realiza el siguiente comando:
 
+activar el XAMPP con mysql.
+
 Dentro de la carpeta de backEnd tienes que escribir en la terminal Node.js command
 ```sh
      npm start
