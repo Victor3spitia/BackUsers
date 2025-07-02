@@ -1,14 +1,15 @@
 import { useState } from "react";
-import DefaultLayout from "../layout/DefaultLayout";
 import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthResponse, AuthResponseError } from "../types/types";
 import { Link } from 'react-router-dom';
+import { API_URL } from "../auth/authConstants"; 
+import DefaultLayout from "../layout/Navbar";
 import Piep from "../layout/PieP";
 
 export default function Signup() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [contraseña, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [rol, setRol] = useState("");
   const [errorResponse, setErrorResponse] = useState("");
@@ -20,23 +21,22 @@ export default function Signup() {
 
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(username, email, password, rol); //lo muestra a la consola
-
+    console.log(nombre, email, contraseña, rol); //lo muestra a la consola
 
     try {
-      const response = await fetch("http://localhost:3000", {
-        method: "POST",
+      const response = await fetch(`${API_URL}/register`, {// llamada de la URL
+        method: "POST",//solicitud 
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password, rol }), 
+        body: JSON.stringify({ nombre, email, contraseña, rol }), 
       });
       if (response.ok) {
         const json = (await response.json()) as AuthResponse;
         console.log(json);
-        setUsername("");
+        setNombre("");
         setEmail("");
-        setRol("");
         setPassword("");
-        goTo("/Dashboard"); // te redirecciona a otra pagina
+        setRol("");
+        goTo("/dashboard"); // te redirecciona a otra pagina
       } else {
         const json = (await response.json()) as AuthResponseError;
         setErrorResponse(json?.body?.error || "Error en el body");
@@ -62,9 +62,9 @@ export default function Signup() {
         <label>Name</label>
         <input
           type="text"
-          name="username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          name="nombre"
+          onChange={(e) => setNombre(e.target.value)}
+          value={nombre}
         />
         <label>Email</label>
         <input
@@ -78,7 +78,7 @@ export default function Signup() {
           type="password"
           name="Password"
           onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          value={contraseña}
           />
         <label>Rol</label>
         <select

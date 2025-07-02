@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="./frontEnd/src/assets/expertrix.png" alt="logo" width="250" height="250" />
+<img src="./frontEnd/public/expertrix.png" alt="logo" width="250" height="250" />
   <br/>
 
   <h3><b>FORM AZURE APP</b></h3>
@@ -34,7 +34,7 @@
 
 # 📖 [Expertrix ] <a name="about-project"></a>
 
-**[Expertrix]** Es un proyecto destinado para practicar y orientar a los nuevos estudiantes del sena, con manejo de distintos metodos de trabajo: como webpack, linters, babel. Para facilitar el trabajo y manejar buenas practicas de codigo, el proyecto fue construido con javascript, html, y css.
+**[Expertrix]** Es un proyecto destinado para practicar y orientar a cualquiera que quiera aprender todo tipo de nuevas habilidades, con manejo de distintos metodos de trabajo: como programacion, escritura, arte o conduccion, tambien para que aquellos con conocimiento puedan ejercer sus profeciones siendo contratados por las empresas o las propias personas.
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -44,9 +44,8 @@
 <li> Express </li>
 <li> Async/await </li>
 <li> Babel </li>
-<li> Git </li>
-<li> Github actions </li>
-<li> Bash Script </li>
+<li> React + Vite </li>
+<li> Node.js </li>
 <!-- Funciones -->
 
 ### Key Features <a name="key-features"></a>
@@ -137,6 +136,8 @@ Express
 
 Para realizar un test, realiza el siguiente comando:
 
+activar el XAMPP con mysql.
+
 Dentro de la carpeta de backEnd tienes que escribir en la terminal Node.js command
 ```sh
      npm start
@@ -175,15 +176,7 @@ Victor Espitia
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONtribuidores -->
 
-## 🤝 Contribuidores <a name="contributing"></a>
-
-contribuciones, problemas y solicitudes de funciones son bienvenidas!
-
-Sientase libre de revisar: [pagina de problemas](https://github.com/alyconr/TV-AMAZE-APP.git/issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Soporte -->
 

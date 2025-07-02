@@ -1,10 +1,12 @@
 const mysql = require("mysql2/promise");
 const config = require("../config");
 
-async function query(sql, params) {
-  const connection = await mysql.createConnection(config.db);// se conecta a la base de datos usando datos del archivo
-  const [results] = await connection.execute(sql, params);// consulta SQL
+//Crea un pool de conexiones a la base de datos. Un pool permite manejar múltiples conexiones de forma eficiente.
+const pool = mysql.createPool(config.db);
 
+//Define una función query asincrónica que ejecuta una consulta SQL con parámetros (params) y devuelve los resultados.
+async function query(sql, params) {
+  const [results] = await pool.execute(sql, params);
   return results;
 }
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthProvider";
 import { API_URL } from "../auth/authConstants";
 import { Link } from 'react-router-dom'
-import DefaultLayout from './../layout/DefaultLayout';
+import Navbar from './../layout/Navbar';
 import Piep from "../layout/PieP";
 
 interface Todo {
@@ -68,7 +68,7 @@ export default function Dashboard() {
 
   return (
     <>
-    <DefaultLayout/>
+    <Navbar/>
      <section className="dashboard">
     <div className="container dashboard_container">
     <aside>
@@ -84,7 +84,7 @@ export default function Dashboard() {
                 </Link>
             </li>
             <li>
-                <Link to="/gestionUser"><i className="bi bi-person-gear"></i>
+                <Link to="/editUser"><i className="bi bi-person-gear"></i>
             <h5>Gestionar cuenta</h5>
                 </Link>
             </li>
@@ -97,7 +97,7 @@ export default function Dashboard() {
     </aside>
     
     <main>
-        <h2>Gestionar Usuarios</h2>
+        <h2>Gestionar trabajos</h2>
         <table>
             <thead>
                 <tr>
@@ -109,25 +109,25 @@ export default function Dashboard() {
             </thead>
             <tbody>
                 <tr>
-                    <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td>Artes</td>                             
+                    <td>Maquetaré un diseño UI UX de sitio web de Figma personalizado y único</td>
+                    <td>Programacion</td>                             
                     <td><a href="edit_post.html" className="btn sm">editar</a></td>
                     <td><a href="delete_categoria.html" className="btn sm danger">borrar</a></td>
-                    <td>Empleado o Cliente</td>
+                    
                 </tr>
                 <tr>
-                    <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td>Artes</td>                             
+                    <td>Realizaré ediciones de videos atractivos y edición de videos de YouTube.</td>
+                    <td>Edicion</td>                             
                     <td><a href="edit_post.html" className="btn sm">editar</a></td>
                     <td><a href="delete_categoria.html" className="btn sm danger">borrar</a></td>
-                    <td>Empleado o Cliente</td>
+                    
                 </tr>
                 <tr>
-                    <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</td>
-                    <td>Artes</td>                             
+                    <td>Compongo y arreglo canciones, partituras y todo lo demás.</td>
+                    <td>Musica</td>                             
                     <td><a href="edit_post.html" className="btn sm">editar</a></td>
                     <td><a href="delete_categoria.html" className="btn sm danger">borrar</a></td>
-                    <td>Empleado o Cliente</td>
+                    
                 </tr>
             </tbody>
         </table>

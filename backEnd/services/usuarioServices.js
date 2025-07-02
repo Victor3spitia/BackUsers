@@ -1,78 +1,121 @@
 const db = require("./db");
 const helper = require("../helper");
 const config = require("../config");
+const bcrypt = require('bcrypt');
 
-async function getMultiple(page = 1) {
+async function registerUser(nombre, correo, contraseña) {
+  const hashedPassword = await bcrypt.hash(contraseña, 10);
+  // Save hashedPassword instead of plain contraseña
+}
+
+async function loginUser(correo, contraseña) {
+  const user = await getUserByCorreo(correo);
+  if (!user) return null;
+  const match = await bcrypt.compare(contraseña, user.contraseña);
+  if (!match) return null;
+  // Proceed with JWT generation
+}
+
+//------------
+
+//get para multiples personas
+
+  async function getMultiple(page = 1) { // page es el numero de pagina que se quiere ver
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    `SELECT id, nombre, Email, contraseña, Rol, fecha_creacion 
-     FROM Usuarios 
-     LIMIT ?, ?`, //placeholders ? para evitar una coneccion directa 
+    `SELECT id, nombre, email, contraseña, rol FROM Usuarios LIMIT ?, ?`,
     [offset, config.listPerPage]
   );
   const data = helper.emptyOrRows(rows);
-  const meta = { page };
-
+  const meta = { page, total: data.length };  // Agregar total de registros a la metadata
   return { data, meta };
 }
 
-async function create(usuario) {
+//get para una persona por ID
+async function getById(id) {
+  const rows = await db.query(
+    `SELECT id, nombre, email, contraseña, rol, FROM Usuarios WHERE id = ?`,
+    [id]
+  );
+  const data = helper.emptyOrRows(rows);
+  return {
+    data
+  };
+}
+
+//metodo para login
+async function login(usuarioService) {
+  const result = await db.query( //WHERE (nombre = ? OR email= ?) AND contraseña = ?
+    `SELECT nombre, email, contraseña, rol FROM Usuarios WHERE nombre = ? AND contraseña = ?`,
+    [ 
+      usuarioService.nombre, 
+      usuarioService.contraseña,
+    ]
+  );
+    let message = "Error en el login";
+    if (result.affectedRows) {
+    message = "ingreso exitoso";
+  }
+  return { message };
+}
+
+
+/* POST para crear nueva informacion */
+async function create(usuarioService) {
   const result = await db.query(
     `INSERT INTO Usuarios 
-     (nombre, Email, contraseña, Rol, fecha_creacion) 
-     VALUES (?, ?, ?, ?, ?)`,
+    (nombre, email, contraseña, rol) 
+    VALUES (?, ?, ?, ?)`,
     [
-      usuario.nombre,
-      usuario.Email,
-      usuario.contraseña,
-      usuario.Rol,
-      usuario.fecha_creacion,
+      usuarioService.nombre,
+      usuarioService.email,
+      usuarioService.contraseña,
+      usuarioService.rol,
     ]
-  );
+  );/* las comillas son solo para los string osea cualquier valor que no sea numero */
 
-  let message = "Error al crear usuario";
-
+  let message = "Error en crear usuario";
   if (result.affectedRows) {
-    message = "Usuario creado correctamente";
+    message = "User creado exitosamente";
   }
-
   return { message };
 }
 
-async function update(id, usuario) {
+/* funcion de PUT para editar informacion ya existente */
+
+async function update(usuarioService) { 
   const result = await db.query(
     `UPDATE Usuarios 
-     SET nombre = ?, Email = ?, contraseña = ?, Rol = ?, fecha_creacion = ? 
-     WHERE id = ?`,
+    SET nombre= ?, email= ?, contraseña= ?, rol= ? 
+    WHERE id= ?`,
     [
-      usuario.nombre,
-      usuario.Email,
-      usuario.contraseña,
-      usuario.Rol,
-      usuario.fecha_creacion,
-      id,
+      usuarioService.nombre,
+      usuarioService.email,
+      usuarioService.contraseña,
+      usuarioService.rol,
     ]
   );
 
-  let message = "Error al actualizar usuario";
 
+  let message = "Error en editar/actualizar info de usuario ";
   if (result.affectedRows) {
-    message = "Usuario actualizado correctamente";
+    message = "User actualizado exitosamente";
   }
 
   return { message };
 }
 
+/* delete para borrar */
 async function remove(id) {
   const result = await db.query(
-    `DELETE FROM Usuarios WHERE id = ?`,
+    `DELETE FROM Usuarios WHERE id= ?`,
     [id]
   );
 
-  let message = "Error al eliminar usuario";
+  let message = "Error En eliminar al usuario";
 
   if (result.affectedRows) {
-    message = "Usuario eliminado correctamente";
+    message = "User eliminado exitosamente";
   }
 
   return { message };
@@ -80,7 +123,10 @@ async function remove(id) {
 
 module.exports = {
   getMultiple,
+  getById,
   create,
   update,
   remove,
+  registerUser,
+  loginUser,
 };

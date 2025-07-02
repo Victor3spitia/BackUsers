@@ -5,4 +5,4 @@ export default function ProtectedRoute() {
   const auth = useAuth();
 
   return auth.isAuthenticated ? <Outlet /> : <Navigate to="/" />;
-} // si la variable outlet es verdadera muestre lo que hay debajo de protectedRoute
+} // si la variable outlet es verdadera muestre lo que hay debajo de protectedRoute en el main

@@ -5,6 +5,9 @@ const config = ({
     user: "root",
     password: "",
     database: "restapitest123",
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
   },
   listPerPage: 10,
 });

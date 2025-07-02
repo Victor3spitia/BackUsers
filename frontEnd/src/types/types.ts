@@ -1,3 +1,4 @@
+//respuesta esperada al hacer login exitoso
 export interface AuthResponse {
   body: {
     user: User;
@@ -5,18 +6,20 @@ export interface AuthResponse {
     refreshToken: string;
   };
 }
+//respuesta esperada al hacer login fallido
 export interface AuthResponseError {
   body: {
     error: string;
   };
 }
-
+//estructura del usuario 
 export interface User {
   _id: string;
   name: string;
-  username: string;
+  email: string;
+  role: string;
 }
-
+//para cuando se solicita un nuevo access token con el refresh token
 export interface AccessTokenResponse {
   statusCode: number;
   body: {
@@ -24,3 +27,4 @@ export interface AccessTokenResponse {
   };
   error?: string;
 }
+

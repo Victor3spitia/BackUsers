@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider.tsx";
-
+/* aqui van las rutas  */
 import Login from "./routes/Login.tsx";
 import Signup from "./routes/Signup.tsx";
 import Dashboard from "./routes/Dashboard.tsx";
@@ -13,7 +13,6 @@ import AddPost from "./pages/add_post.jsx";
 import Curses from "./pages/courses.jsx";
 import EditPost from "./pages/edit_post.jsx";
 import Post from "./pages/post.jsx";
-import Categorias from "./pages/categoria_post.jsx";
 import EditUser from "./pages/edit_user.jsx";
 
 
@@ -42,36 +41,36 @@ const router = createBrowserRouter([
     element: <EditPost/>
   },
   {
-    path:"/add_post",
+    path:"/addPost",
     element: <AddPost/>
   },
   {
     path:"/singlePost",
     element: <Post/>
   },
-  {
-    path:"/categorias",
-    element: <Categorias/>
-  },
 
   {
-    path: "/dashboard",
-    element: <Dashboard />, 
-  },
-  {
-    path: "/gestionUser",
+    path: "/editUser",
     element: <EditUser/>,
   },
+    {
+    path: "/dashboard",
+    element: <Dashboard />, 
+    },
   
   {
     path: "/",
     element: <ProtectedRoute />,//ruta protegida
     children: [
-      
       {
         path: "/me",
         element: <Profile />,
       },
+      /* {
+    path: "/dashboard",
+    element: <Dashboard />, 
+    }, */
+      
     ],
   },
 ]);
